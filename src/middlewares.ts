@@ -108,6 +108,7 @@ const makeThumbnail = async (
   res: Response,
   next: NextFunction,
 ) => {
+  console.log('makeThumbnail');
   try {
     console.log(req.file?.path);
     await sharp(req.file?.path)
