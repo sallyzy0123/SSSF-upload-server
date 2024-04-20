@@ -9,7 +9,7 @@ import api from './api';
 import {MessageResponse} from './types/MessageTypes';
 
 const app = express();
-//
+
 app.use(morgan('dev'));
 app.use(
   helmet({
