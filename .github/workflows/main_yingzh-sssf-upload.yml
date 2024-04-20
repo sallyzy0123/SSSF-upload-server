@@ -22,12 +22,10 @@ jobs:
           node-version: '18.x'
 
       - name: npm install, build, and test
-        env:
-          AUTH_URL: ${{ secrets.AUTH_URL }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
         run: |
           npm install
           npm run build --if-present
+          npm run test --if-present
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -60,5 +58,5 @@ jobs:
         with:
           app-name: 'yingzh-sssf-upload'
           slot-name: 'Production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_39A6C0E0205344C4B7304923C47008D0 }}
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_09415BC006DC421FA7F2C8926D44CDD0 }}
